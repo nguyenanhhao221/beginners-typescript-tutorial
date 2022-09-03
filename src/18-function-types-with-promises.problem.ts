@@ -1,5 +1,5 @@
-import { expect, it } from "vitest";
-import { Equal, Expect } from "./helpers/type-utils";
+import { expect, it } from 'vitest';
+import { Equal, Expect } from './helpers/type-utils';
 
 interface User {
   id: string;
@@ -8,8 +8,8 @@ interface User {
 }
 
 const createThenGetUser = async (
-  createUser: unknown,
-  getUser: unknown,
+  createUser: () => Promise<string>,
+  getUser: (id: string) => Promise<User>
 ): Promise<User> => {
   const userId: string = await createUser();
 
@@ -18,19 +18,19 @@ const createThenGetUser = async (
   return user;
 };
 
-it("Should create the user, then get them", async () => {
+it('Should create the user, then get them', async () => {
   const user = await createThenGetUser(
-    async () => "123",
-    async (id) => ({
-      id: "123",
-      firstName: "Matt",
-      lastName: "Pocock",
-    }),
+    async () => '123',
+    async id => ({
+      id: '123',
+      firstName: 'Matt',
+      lastName: 'Pocock',
+    })
   );
 
   expect(user).toEqual({
-    id: "123",
-    firstName: "Matt",
-    lastName: "Pocock",
+    id: '123',
+    firstName: 'Matt',
+    lastName: 'Pocock',
   });
 });
