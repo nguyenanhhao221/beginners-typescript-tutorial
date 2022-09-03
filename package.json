@@ -13,9 +13,9 @@
   },
   "scripts": {
     "exercise": "node scripts/exercise.js",
-    "e": "yarn exercise",
+    "e": "npm exercise",
     "solution": "SOLUTION=true node scripts/exercise.js",
-    "s": "yarn solution"
+    "s": "npm solution"
   },
   "dependencies": {
     "@types/express": "^4.17.13",
